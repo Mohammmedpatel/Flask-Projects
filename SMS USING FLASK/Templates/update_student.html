@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}update_student{% endblock title %}
+{% block body %}
+<div class="container mt-3">
+    <form action="/update_student/{{students.id}}" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name" value={{students.name}} required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" value={{students.email}} placeholder="name@example.com" name="email" required>
+        </div>
+        <div class="mb-3">
+            <label for="dob" class="form-label">Date of Birth</label>
+            <input type="date" class="form-control" id="dob" name="dob" value={{students.dob}} required>
+        </div>
+        <div class="mb-3">
+            <label for="gender" class="form-label">Gender</label>
+            <select class="form-select" aria-label="Default select example" name="gender" value={{students.gender}}>
+                <option selected>Select</option>
+                <option value="Male" {% if students.gender=="Male" %}selected{% endif %}>Male</option>
+                <option value="Female" {% if students.gender=="Female" %}selected{% endif %}>Female</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="rollno" class="form-label">Roll No</label>
+            <input type="text" class="form-control" id="rollno" name="rollno" value={{students.roll_no}} required>
+        </div>
+        <div class="mb-3">
+            <label for="admission" class="form-label">Admission Date</label>
+            <input type="date" class="form-control" id="admission" name="admission" value={{students.Addmission_date}} required>
+        </div>
+        <div class="mb-3">
+            <label for="course" class="form-label">Course</label>
+            <input type="text" class="form-control" id="course" name="course" value={{students.course}} required>
+        </div>
+        <div class="mb-3">
+            <label for="photo" class="form-label">Profile Photo</label>
+            <input type="file" class="form-control" id="rollno" name="photo" accept="image/*" required>
+            <small>Current photo: {{students.photo}} </small>
+        </div>
+        <button type="submit" class="btn btn-primary mb-3">Update</button>
+    </form>
+</div>
+{% endblock body %}
